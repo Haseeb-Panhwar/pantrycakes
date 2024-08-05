@@ -7,12 +7,13 @@ from django.contrib.auth.mixins import LoginRequiredMixin
 from django.contrib.auth import login
 from django.contrib.auth.forms import UserCreationForm
 from django.urls import reverse_lazy,reverse
-import json,re
+import json,re,os
+from dotenv import load_dotenv
 # Create your views here.
-
+load_dotenv()
 from groq import Groq
 
-client = Groq(api_key='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')
+client = Groq(api_key=os.getenv('groq_api'))
 
 
 class CollectionList(LoginRequiredMixin,ListView):
