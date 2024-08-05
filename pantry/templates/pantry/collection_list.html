@@ -1,0 +1,47 @@
+{% extends 'pantry/main.html' %}
+{% block content %}
+
+<div class="header-bar">
+    <div>
+        <h3>Hello {{request.user|title}}!</h3>
+        <h1>Pantry Collections</h1>
+  </div>
+    {% if request.user.is_authenticated %}
+    <a href="{% url 'logout' %}">Logout</a>
+    {% else %}
+    <a href="{% url 'login' %}">Login</a>
+    {% endif %}
+</div>
+
+
+<div id="search-add-wrapper">
+    <form method="GET" style="margin-top: 20px;display: flex;">
+        <input type="text" name="search-area" value='{{search_input}}'>
+        <input class="button" type="submit" name="" value="Search">
+    </form>
+    <a id="add-link" href="{% url 'collection-create' %}">&#x2b;</a>    
+</div>
+
+
+
+
+<div class="task-items-wrapper">
+    {% for task in collections %}
+        <div class="task-wrapper">
+            <div class="task-title">
+                <div class="task-complete-icon"></div>
+               <a href="{% url 'items' task.id %}">{{task}}</a>
+            </div>
+            <div class="delete-link">
+                <a href="{% url 'collection-update' task.id %}">&#9998;</a>
+            <a  href="{% url 'collection-delete' task.id %}">&#215;</a>
+            </div>
+            
+        </div>
+        {% empty %}
+        <div class="task-title"><p>Hurray! No pending tasks!</p></div>
+    
+    {% endfor %}
+</div>
+
+{% endblock content %}

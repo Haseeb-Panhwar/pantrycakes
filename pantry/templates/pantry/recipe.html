@@ -1,0 +1,19 @@
+{% extends 'pantry/main.html' %}
+{% block content %}
+
+<div class="header-bar">
+    <a href="{% url 'collections' %}">&#8592; Back</a>
+    <h1>Recipe</h1>
+</div>
+
+<div class="card-body">
+    <h1>{{ title }}</h1>
+        <h2>Ingredients</h2>
+        {{ ingredients }}
+        <h2>Process</h2>
+        {{ process }}
+    </p>
+</div>
+
+
+{% endblock content %}

@@ -1,0 +1,17 @@
+{% extends 'pantry/main.html' %}
+{% block content %}
+
+<div class="header-bar">
+    <a href="{% url 'collections' %}">&#8592; Back</a>
+</div>
+
+<div class="card-body">
+    <form method="post" enctype="multipart/form-data">
+        {% csrf_token %}
+        {{form.as_p}}
+        <input class="button" type="submit" value="Submit" id="">
+    </form>
+</div>
+
+
+{% endblock content %}

@@ -1,0 +1,51 @@
+{% extends 'pantry/main.html' %}
+{% block content %}
+{% load static %}
+
+<div class="header-bar">
+    <div>
+        <h1>Pantry Items</h1>
+  </div>
+  <a href="{% url 'collections' %}">&#8592; Back</a>
+</div>
+
+
+<div id="search-add-wrapper">
+    <form method="GET" style="margin-top: 20px;display: flex;">
+        <input type="text" name="search-area" value='{{search_input}}'>
+        <input class="button" type="submit" name="" value="Search">
+    </form>
+    <a id="add-link" href="{% url 'create-item' collection_id %}">&#x2b;</a>    
+</div>
+
+
+
+
+<div class="task-items-wrapper">
+    {% for task in items %}
+        <div class="task-wrapper">
+            <div class="task-title">
+                <!-- <div class="task-complete-icon"></div> -->
+                {% if task.image %}
+                      <img src="{{ task.image.url }}" alt="{{ task.name }}" class="task-image">
+                  {% else %}
+                      <img src="{% static 'images/default.jpg' %}" alt="Default Image" class="task-image">
+                  {% endif %}
+               <a href="{% url 'item-update' task.id  %}">{{task.name}}</a>
+            </div>
+            <div class="delete-link">
+            <a  href="{% url 'item-delete' task.id %}">&#215;</a>
+            </div>
+        </div>
+        {% empty %}
+        <div class="task-title"><p><span>  </span>No Items!</p></div>
+        
+    {% endfor %}
+    <div style="position: relative; align-items: center; text-align: center; padding-bottom: 10px;">
+    <a href="{% url 'recipe' %}?my_list={{ serialized_list|urlencode }}"><button class="gen-button">Generate Recipe!</button></a>
+    </div>
+    
+</div>
+
+
+{% endblock content %}

@@ -1,0 +1,15 @@
+{% extends 'pantry/main.html' %}
+{% block content %}
+
+<div class="header-bar">
+    <a href="{% url 'items' collection_id %}">&#8592; Back</a>
+</div>
+<div class="card-body">
+    <form method="POST">
+        {% csrf_token %}
+    <p>Confirm Deleting <b>{{item.name}}</b> ?</p>
+    <input class="button" type="submit" value="Delete">
+    </form>
+</div>
+
+{% endblock content %}
