@@ -10,4 +10,5 @@ jsonschema-specifications==2023.12.1
 regex==2024.5.15
 requests==2.31.0
 python-dotenv==1.0.1
+pillow==10.3.0
 
