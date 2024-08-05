@@ -73,6 +73,10 @@ TEMPLATES = [
     },
 ]
 
+CSRF_TRUSTED_ORIGINS = [
+    'https://pantrycakes-production.up.railway.app',
+]
+
 WSGI_APPLICATION = 'pantrycakes.wsgi.application'
 
 
