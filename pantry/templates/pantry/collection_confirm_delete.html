@@ -7,7 +7,7 @@
 <div class="card-body">
     <form method="POST">
         {% csrf_token %}
-    <p>Confirm Deleting <b>{{colleciton.title}}</b> ?</p>
+    <p>Confirm Deleting <b>{{colleciton.name}}</b> ?</p>
     <input class="button" type="submit" value="Delete">
     </form>
 </div>
