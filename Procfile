@@ -1,1 +1,1 @@
-web: gunicorn pantry.wsgi --log-file -
+web: gunicorn pantrycakes.wsgi --log-file -
